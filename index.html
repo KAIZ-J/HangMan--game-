@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HangMan Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Kablammo|Sour Gummy|Atma|Poppins|Montserrat"
+    />
+</head>
+<body>
+    <div id="home">
+        <h1 title="Version 1.00">
+             <img src="/hangman.png" alt="|">
+            HangMan
+        </h1>
+        
+        <h5>Find the hidden Word(before it's too late)</h5>
+        <button type="button" id="play" onclick="playGame()">Play</button>
+    </div>
+    <div id="hangman-container">
+        <div id="line1"></div>
+        <div id="line2"></div>
+        <div id="stand"></div>
+        <div id="moreline"></div>
+        <div id="line3"></div>
+        <div id="face"></div>
+        <div id="neck"></div>
+        <div id="left-hand"></div>
+        <div id="right-hand"></div>
+        <div id="body"></div>
+        <div id="left-leg"></div>
+        <div id="right-leg"></div>
+    </div>
+    <div id="input-container">
+
+    </div>
+    <div id="keyboard"></div>
+    <div id="result-container"></div>
+    <script src="script.js">
+        
+    </script>
+</body>
+</html>
