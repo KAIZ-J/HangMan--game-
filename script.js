@@ -130,8 +130,8 @@ function checkWord(){
         
     };
     if(tried>=8 && gameWon===false){
-        idsArray.forEach(el=>{document.getElementById(el).style.borderColor="red";
-        document.getElementById(el).style.boxShadow="0px 0px 50px red";
+        idsArray.forEach(el=>{document.getElementById(el).style.borderColor="#880808";
+        document.getElementById(el).style.boxShadow="0px 0px 50px #880808";
 
         })
         setTimeout(function(){
@@ -169,6 +169,6 @@ function resultMessage(won){
      keyboard.style.display="none";
     inputContainer.style.display="none";
     resultContainer.style.display="flex";
-    resultContainer.innerHTML=`<h1 style="color:${won===true?"":"red"} ;text-shadow:${won===true?"":"0px 0px 20px red"}">${won===true?"You Survived":"You Got Hanged"}</h1> <h3>${won===true?"Wonderful!!":`<strong>${word.toUpperCase()}</strong> was the word`}</h3>
+    resultContainer.innerHTML=`<h1 style="color:${won===true?"":"#880808"} ;text-shadow:${won===true?"":"0px 0px 20px red"}">${won===true?"You Survived":"You Got Hanged"}</h1> <h3>${won===true?"Wonderful!!":`<strong>${word.toUpperCase()}</strong> was the word`}</h3>
     <button type="button" id="playAgain" onclick="playGame()">Play Again</button>`
 }
