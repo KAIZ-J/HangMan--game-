@@ -28,9 +28,12 @@ function addInputs(word){
 function addKeyboardElems(){
     keyboard.innerHTML="";
     let letters = "qwertyuiopasdfghjklzxcvbnm".toUpperCase().split("");
-   letters.forEach(el=>{
- keyboard.innerHTML+=`<button type="button" onclick="addLetter(this)">${el}</button>`
-   })
+    for(let i=0;i<letters.length;i++){
+        if(i===10){
+            keyboard.innerHTML+=`<br>`
+        }
+   keyboard.innerHTML+=`<button type="button" onclick="addLetter(this)">${letters[i]}</button>`
+    }
     keyboard.innerHTML+=`<button type="button" onclick="deleteLetter()">Del</button>
     <button type="button" onclick="checkWord()" id="check-key">Check</button>`
 

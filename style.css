@@ -146,8 +146,9 @@
          }
          #keyboard{
             display: none;
-            grid-template-columns: repeat(8,1fr);
+            grid-template-columns: repeat(10,1fr);
             gap: 5px;
+            align-content: center;
          }
           #result-container{
             display: none;
