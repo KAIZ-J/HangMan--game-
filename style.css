@@ -1,194 +1,220 @@
-*{
-            font-family: poppins;
-        }
-        body{
-            display: flex;
-            flex-direction: column;
-            gap: 20px; 
-            align-items: center;
-            background-color: #1c1c1c;
-            color: #eaeaea;
-        } 
-        #hangman-container{
-            display: none;
-        }
-       input,button{
-        outline: none;
-       }
-
-        button{
-            cursor: pointer;
-        }
-        #line1{
-            width: 0;
-            position: absolute;
-            height: 250px;
-            left:2rem;
-            border: 5px solid;
-        }
-        #line2{
-            position: absolute;
-            width: 200px;
-            height: 0px;
-            border: 5px solid;
-            left:2rem; 
-
-        }
-        #stand{
-            position: absolute;
-            width: 50px;
-            height: 0px;
-            border: 5px solid;
-            left:0.7rem; 
-            top: 16.2rem;
-        }
-         #moreline{
-            position: absolute;
-            width: 50px;
-            height: 0px;
-            border: 5px solid;
-            left:1.56rem; 
-            top: 2rem;
-            transform: rotate(130deg);
-        }
-        
-        #line3{
-            width: 0;
-            height: 50px;  
-            position: absolute;
-            top: 0.5rem;
-            left: 13rem;
-            border: 2px solid;
-            transition: height .3s ease;
-        }
-        #face{
-            width: 70px;
-            height: 70px;
-            border: 4px solid;
-            border-radius: 100px;
-            position: absolute;
-            top: 3.8rem;
-            left: 10.7rem;
-             transition: height .3s ease;
-        }
-        #neck{
-          width: 0;
-            height: 20px;
-            position: absolute;
-            top: 8.4rem;
-            left: 13rem;
-            border: 2px solid; 
-            transition: height .3s ease;
-        }
-        #left-hand{
-            width: 0;
-            height: 45px;
-            position: absolute;
-            top: 9.2rem;
-            left: 11.9rem; 
-            border: 2px solid; 
-            transform: rotate(50deg);
-            transition: height .3s ease;
-        }
-        #right-hand{
-            width: 0;
-            height: 45px;
-            position: absolute;
-            top: 9.2rem;
-            left: 14.1rem; 
-            border: 2px solid; 
-            transform: rotate(130deg);
-            transition: height .3s ease;
-        }
-        #left-leg{
-            width: 0;
-            height: 50px;
-            position: absolute;
-            top: 13.3rem;
-            left: 11.7rem; 
-            border: 2px solid; 
-            transform: rotate(50deg);
-            transition: height .3s ease;
-        }
-        #right-leg{
-            width: 0;
-            height: 50px;
-            position: absolute;
-            top: 13.3rem;
-            left: 14.3rem; 
-            border: 2px solid; 
-            transform: rotate(130deg);
-            transition: height .3s ease;
-        }
-       #body{
-         width: 0;
-            height: 60px;
-            position: absolute;
-            top: 10rem;
-            left: 13rem;
-            border: 2px solid; 
-            transition: height .3s ease;
-       }
-         #input-container{
-            display: none;
-            align-items: center;
-            gap: 5px;
-            margin-top:280px;
-         }
-         #input-container input{
-            width: 20px;
-            font-size: 1.2rem;
-            border: none;
-            background-color: #7d7d7d;
-            padding: 10px;
-            border-bottom: 2px solid #7d7d7d;
-            transition: background-color .3s ease,scale .3s ease;
-         }
-         #keyboard{
-            display: none;
-            grid-template-columns: repeat(10,1fr);
-            gap: 5px;
-            align-content: center;
-         }
-          #result-container{
-            display: none;
-            flex-direction: column;
-            border: 5px solid #7d7d7d;
-            width: 70%;
-            padding: 20px;
-             justify-content: center;
-    height: 70vh;
-    text-align: center;
-    border-radius: 10px;
-    align-items: center;
-        }
-#home{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 90vh;
-    text-align: center;
+* {
+  font-family: poppins;
 }
-#play,#playAgain{
-    padding: 10px;
-    font-size: 1rem;
-    background-color: #7d7d7d;
-    border: none;
-    border-radius: 5px;
-    transition: all .3s ease;
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  background-color: #1c1c1c;
+  color: #eaeaea;
 }
-#play:hover{
-    scale: 1.08;
-    box-shadow: 0px 0px 20px #9f9f9f;
+#hangman-container {
+  display: none;
+}
+input,
+button {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+#line1 {
+  width: 0;
+  position: absolute;
+  height: 250px;
+  left: 2rem;
+  border: 5px solid;
+}
+#line2 {
+  position: absolute;
+  width: 200px;
+  height: 0px;
+  border: 5px solid;
+  left: 2rem;
+}
+#stand {
+  position: absolute;
+  width: 50px;
+  height: 0px;
+  border: 5px solid;
+  left: 0.7rem;
+  top: 16.2rem;
+}
+#moreline {
+  position: absolute;
+  width: 50px;
+  height: 0px;
+  border: 5px solid;
+  left: 1.56rem;
+  top: 2rem;
+  transform: rotate(130deg);
+}
+
+#line3 {
+  width: 0;
+  height: 50px;
+  position: absolute;
+  top: 0.5rem;
+  left: 13rem;
+  border: 2px solid;
+  transition: height 0.3s ease;
+}
+#face {
+  width: 70px;
+  height: 70px;
+  border: 4px solid;
+  border-radius: 100px;
+  position: absolute;
+  top: 3.8rem;
+  left: 10.7rem;
+  transition: height 0.3s ease;
+}
+#neck {
+  width: 0;
+  height: 20px;
+  position: absolute;
+  top: 8.4rem;
+  left: 13rem;
+  border: 2px solid;
+  transition: height 0.3s ease;
+}
+#left-hand {
+  width: 0;
+  height: 45px;
+  position: absolute;
+  top: 9.2rem;
+  left: 11.9rem;
+  border: 2px solid;
+  transform: rotate(50deg);
+  transition: height 0.3s ease;
+}
+#right-hand {
+  width: 0;
+  height: 45px;
+  position: absolute;
+  top: 9.2rem;
+  left: 14.1rem;
+  border: 2px solid;
+  transform: rotate(130deg);
+  transition: height 0.3s ease;
+}
+#left-leg {
+  width: 0;
+  height: 50px;
+  position: absolute;
+  top: 13.3rem;
+  left: 11.7rem;
+  border: 2px solid;
+  transform: rotate(50deg);
+  transition: height 0.3s ease;
+}
+#right-leg {
+  width: 0;
+  height: 50px;
+  position: absolute;
+  top: 13.3rem;
+  left: 14.3rem;
+  border: 2px solid;
+  transform: rotate(130deg);
+  transition: height 0.3s ease;
+}
+#body {
+  width: 0;
+  height: 60px;
+  position: absolute;
+  top: 10rem;
+  left: 13rem;
+  border: 2px solid;
+  transition: height 0.3s ease;
+}
+#input-container {
+  display: none;
+  align-items: center;
+  gap: 5px;
+  margin-top: 280px;
+}
+#input-container input {
+  width: 20px;
+  font-size: 1.2rem;
+  border: none;
+  background-color: #7d7d7d;
+  padding: 10px;
+  border-bottom: 2px solid #7d7d7d;
+  transition: background-color 0.3s ease, scale 0.3s ease;
+}
+#keyboard {
+  display: none;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px;
+  align-content: center;
+}
+#result-container {
+  display: none;
+  flex-direction: column;
+  border: 5px solid #7d7d7d;
+  width: 70%;
+  padding: 20px;
+  justify-content: center;
+  margin-top: 100px;
+  text-align: center;
+  border-radius: 10px;
+  align-items: center;
+}
+#home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 100px;
+}
+#play,
+#playAgain {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #7d7d7d;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+#play:hover {
+  scale: 1.08;
+  box-shadow: 0px 0px 20px #9f9f9f;
 }
 @keyframes scaleUp {
-    0%{
-        scale: 1;
-    }
-    100%{
-        scale: 1.2;
-    }
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 1.2;
+  }
 }
-img{
-    width: 30px;
+img {
+  width: 30px;
+}
+
+#load::after {
+  content: "";
+  animation: name 0.4s ease infinite alternate;
+}
+@keyframes name {
+  0% {
+    content: "";
+  }
+  20% {
+    content: ".";
+  }
+  60% {
+    content: "..";
+  }
+  100% {
+    content: "...";
+  }
+}
+#load-msg {
+  border: 5px solid #1c1c1c;
+  background-color: #eaeaea;
+  border-radius: 10px;
+  color: #1c1c1c;
 }
