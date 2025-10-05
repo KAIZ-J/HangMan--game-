@@ -108,7 +108,8 @@ function checkWord() {
   );
   for (let i = 0; i < word.length; i++) {
     if (inputsValues[i] === wordSplitted[i]) {
-      inputs[i].style.backgroundColor = "black";
+      inputs[i].style.backgroundColor = "var(--accent)";
+      inputs[i].style.borderColor = "var(--accent)";
       inputs[i].style.color = "white";
       let current = forKeyboardNums.findIndex(
         (el) => `input-${el}` === `input-${i + 1}`
