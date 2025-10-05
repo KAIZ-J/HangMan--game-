@@ -12,6 +12,20 @@ const keyboard = document.getElementById("keyboard");
 const resultContainer = document.getElementById("result-container");
 const dialog = document.getElementById("load-msg");
 let word;
+let tried = 0;
+let gameWon = false;
+let gameStarted = false;
+let idsArray = [
+  "line3",
+  "face",
+  "neck",
+  "left-hand",
+  "right-hand",
+  "body",
+  "left-leg",
+  "right-leg",
+];
+addKeyboardElems();
 function addInputs(word) {
   inputContainer.innerHTML = "";
   for (let i = 1; i <= word.length; i++) {
@@ -79,19 +93,7 @@ document.addEventListener("keydown", function (e) {
     checkWord();
   }
 });
-let tried = 0;
-let gameWon = false;
-let gameStarted = false;
-let idsArray = [
-  "line3",
-  "face",
-  "neck",
-  "left-hand",
-  "right-hand",
-  "body",
-  "left-leg",
-  "right-leg",
-];
+
 idsArray.forEach((el) => {
   document.getElementById(el).style.height = "0";
   document.getElementById(el).style.opacity = "0";
@@ -136,8 +138,8 @@ function checkWord() {
   }
   if (tried >= 8 && gameWon === false) {
     idsArray.forEach((el) => {
-      document.getElementById(el).style.borderColor = "#880808";
-      document.getElementById(el).style.boxShadow = "0px 0px 50px #880808";
+      document.getElementById(el).style.borderColor = "var(--blood)";
+      document.getElementById(el).style.boxShadow = "0px 0px 200px var(--blood)";
     });
     setTimeout(function () {
       resultMessage(gameWon);
@@ -145,31 +147,28 @@ function checkWord() {
   }
 }
 
-async function playGame() {
+async function playGame(elem) {
   try {
-    dialog.showModal();
-    let response = await fetch(
+    elem.setAttribute("disabled",true)
+   elem.innerHTML=`<p id="load" style="text-transform:lowercase;font-size:.9rem">Loading</p>`
+    for(let i=0;;i++){
+ let response = await fetch(
       "https://random-word-api.vercel.app/api?words=1"
     );
     let data = await response.json();
-
     word = data[0];
-
+    if(word.length<7) break;
+    }
     counter = 0;
-    resultContainer.style.display = "none";
-    dialog.close();
+    elem.style.display = "none";
+    resultContainer.style.display="none"
+  resultContainer.close();
     forKeyboardNums = generateArray(word.length);
-
     tried = 0;
-    gameStarted = true;
-
-    gameWon = false;
-    home.style.display = "none";
-    keyboard.style.display = "grid";
     inputContainer.style.display = "flex";
-    hangmanContainer.style.display = "block";
     addInputs(word);
-    addKeyboardElems();
+    gameStarted = true;
+    gameWon = false;
     idsArray.forEach((el) => {
       document.getElementById(el).style.height = "0";
       document.getElementById(el).style.opacity = "0";
@@ -177,7 +176,7 @@ async function playGame() {
       document.getElementById(el).style.boxShadow = "";
     });
   } catch (err) {
-    console.log("cound't fetch");
+    console.log(err,"cound't fetch");
     dialog.innerHTML = `Sorry a problem happened.
    <button type="button" onclick="playGame()">Try Again</button>
     <button type="button" onclick="this.parentElement.close()">Close</button>
@@ -187,18 +186,14 @@ async function playGame() {
 function resultMessage(won) {
   gameStarted = false;
   gameWon = false;
-  hangmanContainer.style.display = "none";
-  keyboard.style.display = "none";
-  inputContainer.style.display = "none";
-  resultContainer.style.display = "flex";
-  resultContainer.innerHTML = `<h1 style="color:${
-    won === true ? "" : "#880808"
-  } ;text-shadow:${won === true ? "" : "0px 0px 20px red"}">${
-    won === true ? "You Survived" : "You Got Hanged"
+  resultContainer.style.display="flex"
+  resultContainer.showModal();
+  resultContainer.innerHTML = `<h1>${
+    won === true ? "You Survived (:" : ":( You got hanged"
   }</h1> <h3>${
     won === true
       ? "Wonderful!!"
       : `<strong>${word.toUpperCase()}</strong> was the word`
   }</h3>
-    <button type="button" id="playAgain" onclick="playGame()">Play Again</button>`;
+    <button type="button" id="playAgain" onclick="playGame(this)">Play Again</button>`;
 }

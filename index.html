@@ -14,16 +14,7 @@
       href="https://fonts.googleapis.com/css?family=Kablammo|Sour Gummy|Atma|Poppins|Montserrat"
     />
   </head>
-  <body>
-    <div id="home">
-      <h1 title="Version 1.02">
-        <img src="/hangman.png" alt="|" />
-        HangMan
-      </h1>
-
-      <h5>Find the hidden Word(before it's too late)</h5>
-      <button type="button" id="play" onclick="playGame()">Play</button>
-    </div>
+  <body class="dak">
     <div id="hangman-container">
       <div id="line1"></div>
       <div id="line2"></div>
@@ -39,9 +30,10 @@
       <div id="right-leg"></div>
     </div>
     <div id="input-container"></div>
+    <button type="button" id="play" onclick="playGame(this)">Start game</button>
     <div id="keyboard"></div>
-    <div id="result-container"></div>
-    <dialog id="load-msg"><p id="load">getting your random word</p></dialog>
+    
+    <dialog id="result-container"></dialog>
     <script src="script.js"></script>
   </body>
 </html>
