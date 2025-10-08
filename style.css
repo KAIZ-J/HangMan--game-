@@ -1,24 +1,26 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Rubik:wght@400;600&display=swap');
 :root {
-  --text: #1a1a1a;
-  --bg: #fafafa;
-  --primary: #2b2d42;
-  --secondary: #8d99ae;
-  --accent: #ef233c;
-  --blood: #b30000;
-  --font-heading: 'Creepster', cursive;
-  --font-body: 'Rubik', sans-serif;
+  --text: #f0f0ff;
+  --bg: #0b0b2f;
+  --primary: #3f00ff;
+  --secondary: #6a4dff;
+  --accent: #8f7fff;
+  --blood: #2a00cc;
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Manrope', sans-serif;
 }
 
-body.dark {
-  --text: #f5f5f5;
-  --bg: #121212;
-  --primary: #edf2f4;
-  --secondary: #4a4e69;
-  --accent: #d90429;
-  --blood: #ff0000;
+body.light {
+  --text: #0b0b2f;
+  --bg: #f0f0ff;
+  --primary: #6a4dff;
+  --secondary: #8f7fff;
+  --accent: #3f00ff;
+  --blood: #2a00cc;
 }
+
+
 body {
   display: flex;
   flex-direction: column;
@@ -26,14 +28,15 @@ body {
   align-items: center;
   background-color: var(--bg);
   color: var(--text);
-  margin-top: 120px;
   overflow: hidden;
+  transition: .3s ease-in-out;
+  justify-content: center;
+  height: 100vh; 
 }
 #hangman-container {
   position: relative;
-  margin-left: -220px;
-  margin-top: -100px;
   margin-bottom: 280px;
+  margin-left: -200px;
   color: var(--secondary);
 animation: tilt-in-fwd-tr 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
@@ -169,75 +172,61 @@ button {
   align-items: center;
   gap: 5px;
 }
-@keyframes bounce-in-top {
+@keyframes scale-in-ver-center {
   0% {
-    transform: translateY(-500px);
-    animation-timing-function: ease-in;
-    opacity: 0;
-  }
-  38% {
-    transform: translateY(0);
-    animation-timing-function: ease-out;
+    transform: scale(0);
+    transform-origin: 50% 100%;
     opacity: 1;
   }
-  55% {
-    transform: translateY(-65px);
-    animation-timing-function: ease-in;
-  }
-  72% {
-    transform: translateY(0);
-    animation-timing-function: ease-out;
-  }
-  81% {
-    transform: translateY(-28px);
-    animation-timing-function: ease-in;
-  }
-  90% {
-    transform: translateY(0);
-    animation-timing-function: ease-out;
-  }
-  95% {
-    transform: translateY(-8px);
-    animation-timing-function: ease-in;
-  }
   100% {
-    transform: translateY(0);
-    animation-timing-function: ease-out;
+    transform: scale(1);
+    transform-origin: 50% 100%;
+    opacity: 1;
   }
 }
+
 #input-container input {
-  width: 20px;
+  width:45px;
   font-size: 1.2rem;
   border: none;
-  background-color: var(--primary);
-  color: var(--bg);
-  padding: 10px;
-  border-bottom: 2px solid var(--primary);
+  background-color: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--primary);
   transition: background-color 0.3s ease, scale 0.3s ease;
-  height: 28px;
-animation: bounce-in-top 1.1s both;
+  height: 45px;
+  font-family: Manrope;
+  text-align: center;
+  border-radius: .3em;
+animation: scale-in-ver-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 #keyboard {
   display: grid; 
   grid-template-columns: repeat(10, 1fr);
   gap: 5px;
   align-content: center;
+
 }
 @keyframes fade-in-bottom {
   0% {
-    transform: translateY(50px);
     opacity: 0;
   }
   100% {
-    transform: translateY(0);
     opacity: 1;
   }
 }
 #keyboard button{
   font-family: Rubik;
   font-weight: 100;
-  text-transform: uppercase;
-  animation: fade-in-bottom 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  text-transform: uppercase; 
+  animation: fade-in-bottom 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  height: 40px;
+  background-color: var(--text); 
+  border: none;
+  border-radius: .5em;
+  color: var(--secondary);
+}
+#keyboard button:nth-child(28){
+grid-column: span 3;
 }
 #play,
 #playAgain {
@@ -250,7 +239,7 @@ animation: bounce-in-top 1.1s both;
   font-family: montserrat;
   font-size: 1rem;
   transition: all 0.3s ease;
-  color: var(--bg);
+  color: var(--text);
   transition: .3s ease;
 }
 #play{
@@ -269,7 +258,7 @@ animation: bounce-in-top 1.1s both;
   }
 }   
 #play:disabled,
-#playAgain:disabled {
+#playAgain:disabled,#input-container input:disabled {
   opacity: 0.5;
   cursor: pointer;
 }
@@ -322,4 +311,19 @@ img {
   outline: none;
   font-family: montserrat;
   box-shadow: 0px 0px 10px var(--secondary);
+}
+#theme-btn {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 1.5em;
+  border: none;
+  background-color: var(--primary);
+  color: var(--text); 
+}
+#theme-btn i {
+  scale: 1.1;
+  transition: 0.4s ease;
 }

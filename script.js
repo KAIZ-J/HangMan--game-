@@ -1,3 +1,4 @@
+//in some length from 1 array genertaor
 function generateArray(length) {
   let array = [];
   for (let i = 1; i <= length; i++) {
@@ -5,6 +6,7 @@ function generateArray(length) {
   }
   return array;
 }
+//just selctors and variables
 const hangmanContainer = document.getElementById("hangman-container");
 const home = document.getElementById("home");
 const inputContainer = document.getElementById("input-container");
@@ -36,10 +38,10 @@ function addKeyboardElems() {
   keyboard.innerHTML = "";
   let letters = "qwertyuiopasdfghjklzxcvbnm".toUpperCase().split("");
   for (let i = 0; i < letters.length; i++) {
-    if (i === 10) {
-      keyboard.innerHTML += `<br>`;
-    }
-    keyboard.innerHTML += `<button type="button" onclick="addLetter(this)">${letters[i]}</button>`;
+    // if (i === 10) {
+    //   keyboard.innerHTML += `<br>`;
+    // }
+    keyboard.innerHTML += `<button type="button" onclick="addLetter(this)" class="keyboard-elem">${letters[i]}</button>`;
   }
   keyboard.innerHTML += `<button type="button" onclick="deleteLetter()">Del</button>
     <button type="button" onclick="checkWord()" id="check-key">Check</button>`;
@@ -47,6 +49,7 @@ function addKeyboardElems() {
 
 let counter = 0;
 let forKeyboardNums;
+//addign letters and delteing using the physical keyboard and onscreen keyboard 
 function addLetter(elem) {
   if (counter < forKeyboardNums.length - 1) {
     document.getElementById(`input-${forKeyboardNums[counter]}`).value =
@@ -93,11 +96,12 @@ document.addEventListener("keydown", function (e) {
     checkWord();
   }
 });
-
+//reseting the hangmun figure to origninal state
 idsArray.forEach((el) => {
   document.getElementById(el).style.height = "0";
   document.getElementById(el).style.opacity = "0";
 });
+//pixels that each hangman part have
 let pixels = [50, 70, 20, 45, 45, 60, 50, 50];
 function checkWord() {
   tried++;
@@ -108,6 +112,7 @@ function checkWord() {
   );
   for (let i = 0; i < word.length; i++) {
     if (inputsValues[i] === wordSplitted[i]) {
+      //if the word is the correct place
       inputs[i].style.backgroundColor = "var(--accent)";
       inputs[i].style.borderColor = "var(--accent)";
       inputs[i].style.color = "white";
@@ -117,6 +122,8 @@ function checkWord() {
       if (current !== -1) forKeyboardNums.splice(current, 1);
       inputs[i].id = "";
     } else {
+  //    let btn = [...document.querySelectorAll(".keyboard-elem")].find(el=>el.textContent===inputs[i].value);
+  // btn.setAttribute("disabled",true)
       inputs[i].value = "";
     }
   }
@@ -151,7 +158,7 @@ function checkWord() {
 async function playGame(elem) {
   try {
     elem.setAttribute("disabled",true)
-   elem.innerHTML=`<p id="load" style="text-transform:lowercase;font-size:.9rem">Loading</p>`
+   elem.innerHTML=`<p id="load" style="text-transform:lowercase;font-size:.9rem;">Loading</p>`
     for(let i=0;;i++){
  let response = await fetch(
       "https://random-word-api.vercel.app/api?words=1"
@@ -194,7 +201,16 @@ function resultMessage(won) {
   }</h1> <h3>${
     won === true
       ? "Wonderful!!"
-      : `<strong>${word.toUpperCase()}</strong> was the word`
+      : `The word was <strong>${word.toUpperCase()}</strong> `
   }</h3>
     <button type="button" id="playAgain" onclick="playGame(this)">Play Again</button>`;
 }
+
+function themeChange(elem) {
+  document.body.classList.toggle("light");
+   elem.querySelector("i").style.rotate="0deg"
+   setTimeout(()=>{
+elem.querySelector("i").style.rotate="360deg";
+  elem.querySelector("i").classList.toggle("fa-sun");
+   elem.querySelector("i").classList.toggle("fa-moon"); 
+   },100)}
